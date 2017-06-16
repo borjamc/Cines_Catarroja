@@ -144,19 +144,10 @@ $coment=new Comentarios()
 										      <input type="submit" name="Reservar" value="Reservar">
 							</ul>
 										<?php
-
-                    $datospersonales=$user->MiPerfil($_SESSION['usuario']);
-                    foreach ($datospersonales as $datos) {
-                    ?><input type="hidden" name="edad" value= "<?php ".$datos ['edad']."  ?>">;<?php
-                    }
                     if (isset($_POST['fecha']) && isset($_POST['hora']) && isset($_POST['personas']) && isset($_POST['id_pelicula'])) {
-                        if ($_POST['edad']>7) {
                             $reservar=$reserva->hacerReserva($_POST['personas'],$_POST['hora'],$_POST['fecha'],$_POST['id_pelicula'],$_COOKIE['id_usuario']);
-                        }else {
-                          echo "<br><br><a>Edad insuficiente para hacer la reserva de esta pelicula</a><br><br>";
                         }
                     }
-                  }
                     ?>
 						</section>
 					</div>
