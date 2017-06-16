@@ -11,10 +11,10 @@ class Usuario extends db
     parent::__construct();
   }
 
-  function insertarUsuario($nombre,$apellidos,$usuario,$email,$telefono,$dni,$edad,$pass){
+  function insertarUsuario($nombre,$apellidos,$usuario,$email,$dni,$edad,$pass){
       //Construimos la consulta
-      $sql="INSERT INTO usuarios (id,nombre, apellidos, usuario, email, telefono, dni, edad, pass)
-            VALUES (NULL, '".$nombre."', '".$apellidos."', '".$usuario."', '".$email."', ".$telefono.", '".$dni."' , ".$edad.", '".sha1($pass)."')";
+      $sql="INSERT INTO usuarios (id, nombre, apellidos, usuario, email, dni, edad, pass)
+            VALUES (NULL, '".$nombre."', '".$apellidos."', '".$usuario."', '".$email."', '".$dni."' , ".$edad.", '".sha1($pass)."')";
       //Realizamos la consulta
       $resultado=$this->realizarConsulta($sql);
       if($resultado!=false){
@@ -63,9 +63,9 @@ class Usuario extends db
     }
   }
 
-  public function ActualizarMiPerfil($usuario, $nombre, $apellidos, $email, $telefono, $dni, $direccion)
+  public function ActualizarMiPerfil($usuario, $nombre, $apellidos, $email, $edad, $dni)
   {
-    $sql="UPDATE usuarios SET nombre='" .$nombre ."', apellidos='" .$apellidos ."', email='" .$email ."', telefono=".$telefono.", dni='".$dni."', edad=".$edad." WHERE usuario='" .$usuario ."'";
+    $sql="UPDATE usuarios SET nombre='".$nombre."', apellidos='".$apellidos."', email='".$email."', edad=".$edad.", dni='".$dni."' WHERE usuario='".$usuario."'";
     $actualizarperfil=$this->realizarConsulta($sql);
     if ($actualizarperfil=!false) {
       return true;

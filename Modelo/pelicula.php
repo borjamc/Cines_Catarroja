@@ -11,29 +11,9 @@ class Pelicula extends db
     parent::__construct();
   }
 
-      function hacerReserva($personas,$hora,$fecha,$idpelicula,$iduser){
-    $sql="INSERT INTO reserva(idreserva, personas, hora, fecha, id_pelicula, idusuario) VALUES (NULL, ".$personas.", '".$hora."', '".$fecha."', ".$idpelicula.", ".$iduser.")";
-    //Realizamos la consulta
-    $resultado=$this->realizarConsulta($sql);
-    if($resultado!=false){
-      //Recogemos la ultima reserva insertada
-      $sql="SELECT * from reserva ORDER BY idreserva DESC";
-      //Realizamos la consulta
-      $resultado=$this->realizarConsulta($sql);
-      if($resultado!=false){
-        //sacamos el resultado con un fetch_assoc
-        return $resultado->fetch_assoc();
-      }else{
-        return null;
-      }
-    }else{
-      return null;
-    }
-  }
-
-  function mostrarReserva($fecha, $usuario){
+  function mostrarPelicula($id){
         //Construimos la consulta
-        $sql="SELECT * from reserva WHERE fecha>='".$fecha."' AND idusuario= " .$usuario;
+        $sql="SELECT * from peliculas WHERE id_pelicula=".$id."";
         //Realizamos la consulta
         $resultado=$this->realizarConsulta($sql);
         if($resultado!=null){

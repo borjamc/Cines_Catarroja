@@ -1,9 +1,9 @@
 <?php
 include 'seguridad/seguridad.php';
 include 'Modelo/usuario.php';
-include 'Modelo/pelicula.php';
+include 'Modelo/reserva.php';
 $sesion=new Seguridad();
-$peli=new Pelicula();
+$peli=new Reserva();
 $user=new Usuario();
 
 if (isset($_SESSION["usuario"])==false) {
@@ -77,10 +77,9 @@ if (isset($_SESSION["usuario"])==false) {
             echo "Apellidos: ".$datos['apellidos'] ."<br><br>";
             echo "Usuario: ".$datos['usuario'] ."<br><br>";
             echo "Email: ".$datos['email'] ."<br><br>";
-            echo "Telefono: ".$datos['telefono'] ."<br><br>";
             echo "DNI: ".$datos['dni'] ."<br><br>";
             echo "Edad: ".$datos['edad'] ."<br><br>";
-            echo "<a href='actualizarusuario.php?nombre=".$datos['nombre']."&apellidos=".$datos['apellidos']."&usuario=".$datos['usuario']."&email=".$datos['email']."&telefono=".$datos['telefono']."&dni=".$datos['dni']."&edad=".$datos['edad']."'>Actualizar tus datos.</a>";
+            echo "<a href='actualizarusuario.php?nombre=".$datos['nombre']."&apellidos=".$datos['apellidos']."&usuario=".$datos['usuario']."&email=".$datos['email']."&dni=".$datos['dni']."&edad=".$datos['edad']."'>Actualizar tus datos.</a>";
             echo "<br><br><br><br><br>";
           }
          ?>
@@ -88,11 +87,11 @@ if (isset($_SESSION["usuario"])==false) {
          <?php
           $reservaspendientes=$peli->mostrarReserva(date("Y-m-d"), $_COOKIE['id_usuario']);
           foreach ($reservaspendientes as $reserva) {
-
-            echo "<br>Fecha: " .$reserva['fecha'] ."<br><br>";
+            echo "<br>Pelicula: " .$reserva["nombre"] ."<br><br>";
+            echo "Fecha: " .$reserva['fecha'] ."<br><br>";
             echo "Hora: " .$reserva['hora'] ."<br><br>";
             echo "Numero de personas: " .$reserva['personas'] ."<br><br>";
-            echo "<a href='borrarreserva.php?id=".$reserva['idusuario']."'>Eliminar reserva</a><br><br>";
+            echo "<a href='borrarreserva.php?id=".$reserva['idreserva']."'>Eliminar reserva</a><br><br>";
           }
          ?>
 

@@ -88,7 +88,7 @@ $sesion=new Seguridad();
 					<div class="3u">
 						<section>
 							<h1>COMEDIA</h1>
-							<a href="#" class="image full"><img src="images/polis.jpg" alt=""></a>
+							<a href="peliculas/policia.php" class="image full"><img src="images/polis.jpg" alt=""></a>
 							<header>
 								<h2>Una policia en apuros</h2>
 							</header>
@@ -99,7 +99,7 @@ $sesion=new Seguridad();
 					<div class="3u">
 						<section>
 							<h1>INFANTIL</h1>
-							<a href="#" class="image full"><img src="images/infantil.jpg" alt=""></a>
+							<a href="peliculas/infantil.php" class="image full"><img src="images/infantil.jpg" alt=""></a>
 							<header>
 								<h2>Capitan calzoncillos</h2>
 							</header>

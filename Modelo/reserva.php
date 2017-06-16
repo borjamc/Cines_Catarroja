@@ -33,7 +33,7 @@ class Reserva extends db
 
   function mostrarReserva($fecha, $usuario){
         //Construimos la consulta
-        $sql="SELECT * from reserva WHERE fecha>='".$fecha."' AND idusuario= " .$usuario;
+        $sql="SELECT * FROM reserva INNER JOIN peliculas ON reserva.id_pelicula=peliculas.id_pelicula WHERE fecha>='".$fecha."' AND idusuario=".$usuario."";
         //Realizamos la consulta
         $resultado=$this->realizarConsulta($sql);
         if($resultado!=null){

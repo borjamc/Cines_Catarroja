@@ -73,15 +73,15 @@ $coment=new Comentarios()
 
 					<div class="3u">
 						<section>
-							<h1>Los Guarianes de la Galaxia Vol.2</h1>
-							<a class="image full"><img src="images/gog.jpg" alt=""></a>
-							<p>Sinopsis: Awesome Mix Vol. 2 es el nuevo telón de fondo sonoro de "Guardianes de la Galaxia Vol. 2" de Marvel que narra las aventuras del equipo mientras atraviesan los confines del cosmos. Los Guardianes deben luchar para mantener unida a su nueva familia mientras desentrañan el misterio de la verdadera filiación de Peter Quill. Los viejos enemigos se convierten en nuevos aliados y los personajes favoritos de los fans provenientes de los cómics clásicos acudirán en ayuda de nuestros héroes mientras el Universo Cinematográfico Marvel sigue expandiéndose.</p>
+							<h1>Ghost in the shell: El alma de la maquina</h1>
+							<a class="image full"><img src="images/gits.jpg" alt=""></a>
+							<p>Sinopsis: Nueva versión de la película del 1995, que nos sitúa en un Japón del futuro. Allí, nos encontramos con una cíborg atormentada por dudas existenciales. Su principal duda se centra en el “ghost”, es decir, el elemento que define aquello que conocemos como conciencia o alma. Cree que solamente sabiendo con exactitud qué es el ghost podrá ser capaz de darle sentido a su propia existencia.</p>
 						</section>
 					</div>
 					<div class="3u">
 						<section>
 							<h1>Trailer</h1>
-              <iframe width="560" height="380" src="https://www.youtube.com/embed/12gvJgLE4us?ecver=1" frameborder="0" allowfullscreen></iframe>
+              <iframe width="560" height="380" src="https://www.youtube.com/embed/8nfFMf6Hg9A?ecver=1" frameborder="0" allowfullscreen></iframe>
               <br><br>
               <h1>Sección de comentarios</h1>
               <?php
@@ -89,9 +89,9 @@ $coment=new Comentarios()
                 echo "<br><br><br>";
                 echo "<h2>Inserte su comentario</h2>";
                  ?>
-                <form class="" action='guardianesgalaxia.php' method='post'>
+                <form class="" action='gits.php' method='post'>
                 <input type="text" name="comentario" value="0"><br><br>
-                <input type="hidden" name="id_pelicula" value= "2">
+                <input type="hidden" name="id_pelicula" value= "10">
                 <input type="submit" name="Insertar" value="Comentar">
                 <?php
                 if (isset($_POST['comentario']) && $_POST['comentario']<>"0") {
@@ -101,7 +101,7 @@ $coment=new Comentarios()
                   }
               }
               }
-              $listacomentarios=$coment->mostrarComentario(2);
+              $listacomentarios=$coment->mostrarComentario(10);
           foreach ($listacomentarios as $comentario) {
             echo "<br><br><a>Nombre: " .$comentario['nombre'] ."<br><br></a>";
             echo "<a>Comentario: " .$comentario['comentario'] ."<br><br></a>";
@@ -117,19 +117,18 @@ $coment=new Comentarios()
 					<div class="3u">
 						<section>
 							<ul>
-                <li><p> <b>Duración</b>: 137 min </p></li>
+                <li><p> <b>Duración</b>: 106 min </p></li>
 								<li><p> <b>País</b>: Estados Unidos </p></li>
-								<li><p> <b>Género</b>: Acción - Aventura - Ciencia ficción </p></li>
-								<li><p> <b>Estreno</b>: 28/04/2017 </p></li>
-								<li><p> <b>Directores</b>: James Gunn </p></li>
-								<li><p> <b>Actores</b>: Bradley Cooper, Chris Pratt, Dave Bautista, Karen Gillan, Vin Diesel, Zoe Saldana </p></li>
-								<li><p> <b>Guionistas</b>: Andy Lanning, Dan Abnett, James Gunn </p></li>
-								<li><p> <b>Productores</b>: Marvel Enterprises, Marvel Studios, Walt Disney Pictures </p></li>
+								<li><p> <b>Género</b>: Aventura - Crimen - Drama - Ciencia ficción - Suspense </p></li>
+								<li><p> <b>Estreno</b>: 31/03/2017 </p></li>
+								<li><p> <b>Directores</b>: Rupert Sanders </p></li>
+								<li><p> <b>Actores</b>: Juliette Binoche, Michael Pitt, Pilou Asbæk, Rila Fukushima, Scarlett Johansson , Takeshi Kitano </p></li>
+								<li><p> <b>Productores</b>: Dreamworks Skg, Grosvenor Park Productions, Paramount Pictures </p></li>
 								<?php
 								if (isset($_SESSION['usuario'])) {
 								 ?>
 								 		<h1>RESERVA</h1><br><br>
-										<form class="" action='guardianesgalaxia.php' method='post'>
+										<form class="" action='gits.php' method='post'>
 													<a>Fecha:</a> <input type="date" name="fecha" value= ""><br><br>
 										      <a>Hora:</a> <select name="hora">
 			   													<option value='8:30'>8:30</option>
@@ -140,7 +139,7 @@ $coment=new Comentarios()
 																	<option value='20:00'>20:00</option>
 																</select><br><br>
 										      <a>Numero de personas: </a><input type="number" name="personas" value="" min="1" max="50">
-                          <input type="hidden" name="id_pelicula" value= "2"><br><br>
+                          <input type="hidden" name="id_pelicula" value= "10"><br><br>
 										      <input type="submit" name="Reservar" value="Reservar">
 							</ul>
 										<?php
@@ -150,7 +149,7 @@ $coment=new Comentarios()
                     ?><input type="hidden" name="edad" value= "<?php ".$datos ['edad']."  ?>">;<?php
                     }
                     if (isset($_POST['fecha']) && isset($_POST['hora']) && isset($_POST['personas']) && isset($_POST['id_pelicula'])) {
-                        if ($_POST['edad']>16) {
+                        if ($_POST['edad']>12) {
                             $reservar=$reserva->hacerReserva($_POST['personas'],$_POST['hora'],$_POST['fecha'],$_POST['id_pelicula'],$_COOKIE['id_usuario']);
                         }else {
                           echo "<br><br><a>Edad insuficiente para hacer la reserva de esta pelicula</a><br><br>";

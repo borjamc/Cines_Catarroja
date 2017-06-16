@@ -1,5 +1,8 @@
 <!DOCTYPE HTML>
-
+<<?php
+include 'seguridad/seguridad.php';
+$sesion=new Seguridad();
+ ?>
 <html>
 	<head>
 		<title>CARTELERA</title>
@@ -29,15 +32,29 @@
 				</div>
 
 				<!-- Nav -->
-				<nav id="nav">
-					<ul>
-						<li><a href="index.php">Pagina principal</a></li>
-						<li class="active"><a href="cartelera.php">Cartelera</a></li>
-						<li><a href="twocolumn1.html">Left Sidebar</a></li>
-						<li><a href="twocolumn2.html">Right Sidebar</a></li>
-
-					</ul>
-				</nav>
+				<?php
+				if (isset($_SESSION["usuario"])) {
+					echo "<nav id='nav'>";
+						echo "<ul>";
+							echo "<li><a href='index.php'>Pagina principal</a></li>";
+							echo "<li class='active'><a href='cartelera.php'>Cartelera</a></li>";
+							echo "<li><a href='myperfil.php'>MyPerfil</a></li>";
+							echo "<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>";
+							echo "<li><a href='logout.php'>Cerrar sesion</a>";
+						echo "</ul>";
+					echo "</nav>";
+				}else {
+					echo "<nav id='nav'>";
+						echo "<ul>";
+							echo "<li><a href='index.php'>Pagina principal</a></li>";
+							echo "<li class='active'><a href='cartelera.php'>Cartelera</a></li>";
+							echo "<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>";
+							echo "<li><a href='login.php'>Iniciar sesion</a></li>";
+				      echo "<li><a href='registro.php'>Registro</a></li>;";
+						echo "</ul>";
+					echo "</nav>";
+				}
+				 ?>
 
 			</div>
 		</div>
@@ -51,7 +68,7 @@
 						<header>
 							<h1>American Pastoral</h1>
 						</header>
-						<p><a href="#"><img src="images/americanpastoral.jpg" alt=""></a></p>
+						<p><a href="peliculas/pastor.php"><img src="images/americanpastoral.jpg" alt=""></a></p>
 					</section>
 				</div>
 				<div class="3u">
@@ -59,7 +76,7 @@
 						<header>
 							<h1>Testigo</h1>
 						</header>
-						<p><a href="#"><img src="images/testigo.jpg" alt=""></a></p>
+						<p><a href="peliculas/testigo.php"><img src="images/testigo.jpg" alt=""></a></p>
 					</section>
 				</div>
 				<div class="3u">
@@ -67,7 +84,7 @@
 						<header>
 							<h1>Patria</h1>
 						</header>
-						<p><a href="#"><img src="images/patria.jpg" alt=""></a></p>
+						<p><a href="peliculas/patria.php"><img src="images/patria.jpg" alt=""></a></p>
 					</section>
 				</div>
 				<div class="3u">
@@ -75,7 +92,7 @@
 						<header>
 							<h1>Alien: covenant</h1>
 						</header>
-						<p><a href="#"><img src="images/alien.jpg" alt=""></a></p>
+						<p><a href="peliculas/alien.php"><img src="images/alien.jpg" alt=""></a></p>
 					</section>
 				</div>
 				<!-- Segunda columna -->
@@ -84,7 +101,7 @@
 						<header>
 							<h1>El Circulo</h1>
 						</header>
-						<p><a href="#"><img src="images/circulo.jpg" alt=""></a></p>
+						<p><a href="peliculas/circulo.php"><img src="images/circulo.jpg" alt=""></a></p>
 					</section>
 				</div>
 				<div class="3u">
@@ -92,7 +109,7 @@
 						<header>
 							<h1>Ghost in the shell</h1>
 						</header>
-						<p><a href="#"><img src="images/gits.jpg" alt=""></a></p>
+						<p><a href="peliculas/gits.php"><img src="images/gits.jpg" alt=""></a></p>
 					</section>
 				</div>
 				<div class="3u">
@@ -108,7 +125,7 @@
 						<header>
 							<h1>Piratas del caribe</h1>
 						</header>
-						<p><a href="#"><img src="images/piratas.jpg" alt=""></a></p>
+						<p><a href="peliculas/piratas.php"><img src="images/piratas.jpg" alt=""></a></p>
 					</section>
 				</div>
 

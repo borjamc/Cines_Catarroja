@@ -1,9 +1,7 @@
 <?php
 include_once'seguridad/seguridad.php';
 include_once 'Modelo/usuario.php';
-include_once 'Modelo/pelicula.php';
 $sesion=new Seguridad();
-$peli=new Pelicula();
 $user=new Usuario();
 
 if (isset($_SESSION["usuario"])==false) {
@@ -74,20 +72,17 @@ if (isset($_SESSION["usuario"])==false) {
       <a>Nombre: <input type="text" name="nombre" value="<?=$_GET["nombre"]?>"></a><br><br>
       <a>Apellidos: <input type="text" name="apellidos" value="<?=$_GET["apellidos"]?>"></a><br><br>
       <a>Email: <input type="text" name="email" value="<?=$_GET["email"]?>"></a><br><br>
-      <a>DNI: <input type="text" name="dni" value="<?=$_GET["dni"]?>"></a><br><br>
-      <a>Telefono: <input type="text" name="telefono" value="<?=$_GET["telefono"]?>"></a><br><br>
       <a>Edad: <input type="text" name="edad" value="<?=$_GET["edad"]?>"></a><br><br>
+      <a>DNI: <input type="text" name="dni" value="<?=$_GET["dni"]?>"></a><br><br>
       <input type="submit" name="Actualizar" value="Actualizar">
     </form>
     <?php
-    if (isset($_POST['usuario']) && isset($_POST['nombre']) && isset($_POST['apellidos']) && isset($_POST['email']) && isset($_POST['dni']) && isset($_POST['telefono']) && isset($_POST['edad'])) {
-      $actualizarPerfil=$user->ActualizarMiPerfil($_POST['user'], $_POST['nombre'], $_POST['apellidos'], $_POST['email'], $_POST['dni'], $_POST['telefono'], $_POST['edad']);
+    if (isset($_POST['usuario']) && isset($_POST['nombre']) && isset($_POST['apellidos']) && isset($_POST['email']) && isset($_POST['edad']) && isset($_POST['dni'])) {
+      $actualizarPerfil=$user->ActualizarMiPerfil($_POST['usuario'], $_POST['nombre'], $_POST['apellidos'], $_POST['email'], $_POST['edad'], $_POST['dni']);
       if ($actualizarPerfil==true) {
         header('Location: myperfil.php');
-      }else {
-        header('Location: index.php');
-    }
-    }
+      }
+  }
      ?>
 </div>
   </body>
