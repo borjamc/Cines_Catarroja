@@ -25,7 +25,7 @@ $sesion=new Seguridad();
 
 				<!-- Logo -->
 				<div id="logo">
-					<h1><a>Cines Catarroja</a></h1>
+					<h1><a>Cines Catarroja Cosas de Desplieges</a></h1>
 				</div>
 
 				<!-- Nav -->
